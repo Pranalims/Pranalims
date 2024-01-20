@@ -8,22 +8,25 @@ import static org.hamcrest.Matchers.lessThan;
 import org.testng.annotations.Test;
 
 import com.pojo.LoginRequestPOJO;
+import com.util.Role;
 import com.util.TestUtility;
 
 import io.restassured.http.Header;
 
-public class LoginAPIRequest4 {
-
+public class AssignJob {
 	@Test
-	public void loginAPITest() {
+	public void assignJob() {
 
-		LoginRequestPOJO loginRequestPOJO = new LoginRequestPOJO("iamfd","password");
-		String jsonData = TestUtility.convertToJson(loginRequestPOJO);
+		
+		String jsonData = "{\r\n"
+				+ "    \"job_id\": "+TestUtility.jobId+",\r\n"
+				+ "    \"engineer_id\": 2\r\n"
+				+ "}";
 		baseURI = "http://139.59.91.96:9000";
 		Header myHeader = new Header("Content-Type", "application/json");
-		Header myHeader2 = new Header("ABC", "XYZ");
+		Header myHeader2 = new Header("Authorization", TestUtility.generateTokenFor(Role.SUP));
 
-					String data=	given()
+					given()
 										.header(myHeader)
 									.and()
 									.header(myHeader2)
@@ -31,20 +34,17 @@ public class LoginAPIRequest4 {
 										.body(jsonData)
 									.log().all()
 									.when()
-										.post("/v1/login")
+										.post("v1/engineer/assign")
 									.then()
 									.log().all()
 									.assertThat()
 										.statusCode(200)
 									.and()
-										.body("message",equalTo("Success"))
-									.and()
-										.time(lessThan(500L))
-										.extract().path("data.token");
+										.body("message",equalTo("Engineer assigned successfully"));
+									
 		
-					System.out.println(data);
+				
 	
 		
 	}
-
 }

@@ -2,18 +2,51 @@ package com.util;
 
 import static io.restassured.RestAssured.given;
 
+import com.github.javafaker.Faker;
 import com.google.gson.Gson;
+import com.pojo.CreateJobRequestPOJO;
+import com.pojo.Customer;
+import com.pojo.Customer_Address;
+import com.pojo.Customer_Product;
 import com.pojo.LoginRequestPOJO;
+import com.pojo.Problem;
 
 import io.restassured.http.Header;
 
 public class TestUtility {
+	public static int jobId;
 
 	public static String convertToJson(Object refVariable) {
 		Gson gson = new Gson();
 		String data = gson.toJson(refVariable);
 
 		return data;
+	}
+
+	public static CreateJobRequestPOJO createJobRequestPOJO() {
+		Faker faker = new Faker();
+		String fName = faker.name().firstName();
+		String lName = faker.name().lastName();
+		String phoneNumber = faker.phoneNumber().cellPhone();
+		String emailAddress = faker.internet().emailAddress();
+
+		String aptNumber = faker.address().buildingNumber();
+		String aptName = faker.address().streetName();
+		String streetName = faker.address().streetName();
+
+		String IMEINumber = faker.numerify("8##############"); // 823435434234535
+		Customer customer = new Customer(fName, lName, phoneNumber, null, emailAddress, null);
+		Customer_Address address = new Customer_Address(aptNumber, aptName, streetName, "in orbit mall", "Link Road",
+				"411045", "India", "Maharashtra");
+		Customer_Product product = new Customer_Product("2023-06-10T18:30:00.000Z", IMEINumber, IMEINumber, IMEINumber,
+				"2023-06-10T18:30:00.000Z", 1, 1);
+		Problem[] deviceProblem = new Problem[1];
+		deviceProblem[0] = new Problem(1, "Phone not working");
+
+		CreateJobRequestPOJO createJobRequestPOJO = new CreateJobRequestPOJO(0, 2, 1, 1, customer, address, product,
+				deviceProblem);
+
+		return createJobRequestPOJO;
 	}
 
 	public static String generateTokenFor(String role) {
