@@ -2,14 +2,14 @@ package com.util;
 
 import static io.restassured.RestAssured.given;
 
+import com.api.pojo.CreateJobRequestPOJO;
+import com.api.pojo.Customer;
+import com.api.pojo.Customer_Address;
+import com.api.pojo.Customer_Product;
+import com.api.pojo.LoginRequestPOJO;
+import com.api.pojo.Problem;
 import com.github.javafaker.Faker;
 import com.google.gson.Gson;
-import com.pojo.CreateJobRequestPOJO;
-import com.pojo.Customer;
-import com.pojo.Customer_Address;
-import com.pojo.Customer_Product;
-import com.pojo.LoginRequestPOJO;
-import com.pojo.Problem;
 
 import io.restassured.http.Header;
 

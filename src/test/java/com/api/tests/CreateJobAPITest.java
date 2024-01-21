@@ -5,6 +5,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.lessThan;
 
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.util.Role;
@@ -13,14 +14,23 @@ import com.util.TestUtility;
 import io.restassured.http.Header;
 
 public class CreateJobAPITest {
-	@Test
-	public void createJobAPITest() {
+	private String payload;
+	private Header myHeader;
+	private	Header myHeader2;
 
-		String payload = TestUtility.convertToJson(TestUtility.createJobRequestPOJO());
+	@BeforeMethod(description = "Setting up Base URI, Payload and Header")
+
+	public void setup() {
+		payload = TestUtility.convertToJson(TestUtility.createJobRequestPOJO());
 
 		baseURI = "http://139.59.91.96:9000";
-		Header myHeader = new Header("Content-Type", "application/json");
-		Header myHeader2 = new Header("Authorization", TestUtility.generateTokenFor(Role.FD));
+		myHeader = new Header("Content-Type", "application/json");
+		myHeader2 = new Header("Authorization", TestUtility.generateTokenFor(Role.FD));
+	}
+
+	@Test(description = "Verify if the FD is able to create the Inwarranty job via API ", groups = { "api", "sanity", "smoke",
+			"e2e" })
+	public void createJobAPITest() {
 
 		TestUtility.jobId = given().header(myHeader).and().header(myHeader2).and().body(payload).log().all().when()
 				.post("/v1/job/create").then().log().all().assertThat().statusCode(200).and()
@@ -30,6 +40,5 @@ public class CreateJobAPITest {
 		System.out.println(TestUtility.jobId);
 
 	}
-	
-	
+
 }
