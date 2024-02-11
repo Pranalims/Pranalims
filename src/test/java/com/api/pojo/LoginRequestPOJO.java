@@ -7,7 +7,7 @@ package com.api.pojo;
     "password": "password"
 }
  */
-public class LoginRequestPOJO {
+public final class LoginRequestPOJO {
 	private String username;
 	private String password;
 

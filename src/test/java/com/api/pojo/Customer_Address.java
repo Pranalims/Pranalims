@@ -1,6 +1,6 @@
 package com.api.pojo;
 
-public class Customer_Address {
+public final class Customer_Address {
 
 	private String flat_number;
 	private String apartment_name;

@@ -1,6 +1,6 @@
 package com.api.pojo;
 
-public class Customer_Product {
+public final class Customer_Product {
 	private String dop;
 	private String serial_number;
 	private String imei1;

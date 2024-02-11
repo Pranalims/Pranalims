@@ -6,13 +6,15 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.lessThan;
 
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.api.pojo.LoginRequestPOJO;
 import com.util.TestUtility;
 
 import io.restassured.http.Header;
-
+@Listeners(com.listeners.APIListeners.class)
+@Test(testName = "Login API Test Class")
 public class LoginAPITest {
 	LoginRequestPOJO loginRequestPOJO;
 	String jsonData;
@@ -29,8 +31,8 @@ public class LoginAPITest {
 		myHeader2 = new Header("ABC", "XYZ");
 	}
 
-	@Test(description = "Verify if the User is able to Login into the Application via api ", groups = { "api", "sanity",
-			"smoke", "e2e" })
+	@Test( description = "Verify if the User is able to Login into the Application via api ", groups = { "api", "sanity",
+			"smoke", "e2e" }, retryAnalyzer = com.listeners.RetryAnalyzer.class)
 	public void loginAPITest() {
 
 		String data = given().header(myHeader).and().header(myHeader2).and().body(jsonData).log().all().when()

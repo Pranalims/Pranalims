@@ -4,7 +4,7 @@ import java.util.Objects;
 
 //POJO Design Pattern --- transfer object DP
 //GSON or Jackson!!
-public class Person {
+public final class Person {
 	private String name;
 	private String contactNumber;
 	private int age;

@@ -1,6 +1,6 @@
 package com.api.pojo;
 
-public class Problem {
+public final class Problem {
 	private int id;
 	private String remark;
 	public Problem(int id, String remark) {

@@ -1,6 +1,6 @@
 package com.api.pojo;
 
-public class Customer {
+public final class Customer {
 	private String first_name;
 	private String last_name;
 	private String mobile_number;

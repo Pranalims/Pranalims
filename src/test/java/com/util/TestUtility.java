@@ -13,13 +13,12 @@ import com.google.gson.Gson;
 
 import io.restassured.http.Header;
 
-public class TestUtility {
+public abstract class TestUtility { //closed the door any one to create the object TU
 	public static int jobId;
 
 	public static String convertToJson(Object refVariable) {
 		Gson gson = new Gson();
 		String data = gson.toJson(refVariable);
-
 		return data;
 	}
 

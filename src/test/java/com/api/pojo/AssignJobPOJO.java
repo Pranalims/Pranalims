@@ -1,6 +1,6 @@
 package com.api.pojo;
 
-public class AssignJobPOJO {
+public final class AssignJobPOJO {
 	private int job_id;
 	private int engineer_id;
 

@@ -2,7 +2,7 @@ package com.api.pojo;
 
 import java.util.Arrays;
 
-public class CreateJobRequestPOJO {
+public final class CreateJobRequestPOJO {
 	private int mst_service_location_id;
 	private int mst_platform_id;
 	private int mst_warrenty_status_id;
