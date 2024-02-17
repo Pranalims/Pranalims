@@ -2,6 +2,8 @@ package com.listeners;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.apache.commons.io.FileUtils;
 import org.testng.ITestContext;
@@ -89,8 +91,10 @@ public class APIListeners implements ITestListener {
 				e.printStackTrace();
 			}
 		}
-
-		extentSparkReporter = new ExtentSparkReporter(reportPath);
+		Date date = new Date();
+		SimpleDateFormat formater = new SimpleDateFormat("DD-MM-yyyy-HH-mm");
+		String data=formater.format(date);
+		extentSparkReporter = new ExtentSparkReporter(reportPath+"//report-"+data+".html");
 		extentReports.attachReporter(extentSparkReporter);
 
 	}
