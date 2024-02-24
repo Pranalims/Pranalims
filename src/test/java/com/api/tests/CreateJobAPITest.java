@@ -28,7 +28,7 @@ public class CreateJobAPITest {
 		myHeader2 = new Header("Authorization", TestUtility.generateTokenFor(Role.FD));
 	}
 
-	@Test(description = "Verify if the FD is able to create the Inwarranty job via API ", groups = { "api", "sanity", "smoke",
+	@Test(description = "Verify if the FD is able to create the Inwarranty job via API ", groups = { "api", "sanity",
 			"e2e" })
 	public void createJobAPITest() {
 

@@ -27,7 +27,7 @@ public class AssignJobAPITest {
 	}
 
 	@Test(description = "Verify if the Superivsor is able to assign the job to the engineer ", groups = { "api",
-			"sanity", "smoke", "e2e" })
+			"sanity", "e2e" })
 	public void assignJob() {
 
 		given().header(myHeader).and().header(myHeader2).and().body(jsonData).log().all().when()
