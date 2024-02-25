@@ -23,6 +23,9 @@ public class Runner {
 	}
 
 	private static void runTestNG(String componentType, String testType) {
+		System.out.println("****************** ComponentType is =" + componentType);
+		System.out.println("****************** TestType is =" + testType);
+
 		TestNG testNG = new TestNG();
 		XmlSuite suite = new XmlSuite();
 		suite.setName("My Test Suite"); // <suite name="My Test Suite">
@@ -50,8 +53,11 @@ public class Runner {
 		suiteList.add(suite);
 
 		testNG.setXmlSuites(suiteList);
+		System.out.println("****************** Executing Dynamic TestNG Xml file for " + componentType
+				+ " and Test Type" + testType);
 
 		testNG.run();
+
 	}
 
 }
