@@ -1,3 +1,4 @@
+![logo](https://github.com/Pranalims/Pranalims/commit/6121bf3d2e1af12b1b1654f79ba8660bdccfcb7a.png)
 <h1 align="center">Hi 👋, I'm Pranali Mhatre</h1>
 <h3 align="center">I'm a Software Development Engineer in Test (SDET)</h3>
 
